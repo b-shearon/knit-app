@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const GuageContext = createContext("metric");
+const UnitsContext = createContext("metric");
 
-export default GuageContext;
+export default UnitsContext;

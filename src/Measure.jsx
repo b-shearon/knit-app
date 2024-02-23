@@ -32,7 +32,7 @@ export default function Measure() {
 
           <p/>
 
-          <Link to="/guage"><button>Back</button></Link>
+          <Link to="/gauge"><button>Back</button></Link>
           {' '}
           <Link to="/"><button>Next</button></Link>
       </>

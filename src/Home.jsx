@@ -8,7 +8,7 @@ export default function Home() {
         <div>
             <h1>Knit Sweater Calculator</h1>
             <p>Welcome to the knit sweater calculator. By inputting your guage, measurements, and style preferences, this calculator will make a drop-shoulder sweater pattern tailored to you!</p>
-            <Link to="/guage"><button>Start</button></Link>
+            <Link to="/gauge"><button>Start</button></Link>
         </div>
     </>
   );
