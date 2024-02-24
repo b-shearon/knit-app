@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import { Card, Button, Col } from "react-bootstrap";
+import {Col, Row } from "react-bootstrap";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
-export default function Measure() {
+export default function Measure(props) {
+
+    //Set the users current progress through the questions
+    props.setProg(50);
+
     return (
       <>
           <h2>Measurements</h2>
@@ -17,24 +22,24 @@ export default function Measure() {
           <p>The ease of your sweater determines the final fit. Negative ease means the chest measurement of your sweater is less than your bust measurement. Positive ease means the chest measurement of your sweater is greater than your chest measurement. No ease means your sweater will be fitted to your bust exactly.</p>
           <p></p>
           <Form>
-                <Form.Group controlId="chestMeas">
+                <Form.Group as = {Row} controlId="chestMeas" className="justify-content-md-center">
+                  <Col md="auto" >
                     <Form.Control type="cheastMeasurement" placeholder="0" />
+                    </Col>
                 </Form.Group>
             </Form>
 
           <h4>Neck measurement</h4>
           <p>The desired width of the neck at the shoulders.</p>
 
-          <h4>Armpit depth measurement</h4>
-          <p>The measurement from the shoulder to the bottom of the sleeve hole. </p>
+          <h4>Armhole depth measurement</h4>
+          <p>The desired length from the shoulder to the bottom of the armhole. </p>
           <p>For a form-fitting sweater, this is about the length of your shoulder to your armpit. For a looser fit, add the desired inches on top of your shoulder to armpit length.</p>
 
 
-          <p/>
-
           <Link to="/gauge"><button>Back</button></Link>
           {' '}
-          <Link to="/"><button>Next</button></Link>
+          <Link to="/pattern"><button>Next</button></Link>
       </>
     );
   }

@@ -2,7 +2,11 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './App.css'
 
-export default function Home() {
+export default function Home(props) {
+
+  //Set the users current progress through the questions
+  props.setProg(0);
+
   return (
     <>
         <div>

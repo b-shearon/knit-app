@@ -7,18 +7,14 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 
 export default function Gauge(props) {
 
-    //Selected units to use throughout pattern.
+    //Selected units to use throughout pattern
     const selectedUnits = useContext(UnitsContext);
 
-    //Gauge counts
-    const [sts, setSts] = useState(0);
-    const [rows, setRows] = useState(0);
+    //Set the users current progress through the questions
+    props.setProg(25);
 
     return (
         <div>
-            
-            <ProgressBar striped = {true} now={15} variant="barColor"/>
-
             <h2>Unit Selector</h2>
             <p>Please select whether you'd like to use metric units (centimeters) or imperial units (inches).</p>
             <Row className="justify-content-md-center">
@@ -40,14 +36,14 @@ export default function Gauge(props) {
             <Form>
                 <Form.Group as = {Row} controlId="gaugeSts" className="justify-content-md-center">
                     <Col md="auto">
-                    <Form.Control type="sts" placeholder="0" />
+                    <Form.Control type="sts" placeholder={props.sts} onChange={(e) => props.setSts(e.target.value)}/>
                     </Col>
                     <Form.Label column md="auto">
                     {' '}stitches by{' '}
                     </Form.Label>
 
                     <Col md="auto">
-                    <Form.Control type="rows" placeholder="0" />
+                    <Form.Control type="rows" placeholder={props.rows} onChange={(e) => props.setRows(e.target.value)}/>
                     </Col>
 
                     <Form.Label column md="auto">
@@ -56,8 +52,6 @@ export default function Gauge(props) {
                     
                 </Form.Group>
             </Form>
-
-            <p/>
 
             <Link to="/"><button>Back</button></Link>
             {' '}
