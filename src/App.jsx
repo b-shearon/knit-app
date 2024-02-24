@@ -1,13 +1,12 @@
-import {Routes, Route} from 'react-router-dom';
 import Gauge from "./Gauge.jsx";
 import Home from "./Home";
 import Measure from './Measure';
 import Pattern from './Pattern.jsx';
-import { useEffect, useState, useContext } from "react";
 import './App.css'
+import { useEffect, useState, useContext } from "react";
+import {Routes, Route} from 'react-router-dom';
 import UnitsContext from "./contexts/UnitsContext.js";
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { Navbar, Container } from 'react-bootstrap';
 
 function App() {
 
@@ -26,17 +25,19 @@ function App() {
   const [chest, setChest] = useState(0);
   const [neck, setNeck] = useState(0);
   const [armhole, setArmhole] = useState(0);
+  const [length, setLength] = useState(0);
+  const [sleeve, setSleeve] = useState(0);
 
   return (
     <>
-    <ProgressBar striped = {true} now={prog} variant="barColor" style={{top:0, left:25, right:25, marginBottom: 50, marginTop: 50, position: 'fixed'}}/>
+    <ProgressBar striped = {true} now={prog} variant="barColor" style={{top:0, left:25, right:25, marginBottom: 50, marginTop: 50, position: 'absolute'}}/>
     
     <UnitsContext.Provider value={value}>
         <Routes>
           <Route path="/" element={<Home setProg = {setProg}/>}/>
-          <Route path="/gauge" element={<Gauge setProg = {setProg} sts = {sts} rows = {rows} setSts = {setSts} setRows = {setRows}/>} />
-          <Route path="/measure" element={<Measure setProg = {setProg} setChest = {setChest} setNeck = {setNeck} setArmhole = {setArmhole}/>} />
-          <Route path="/pattern" element={<Pattern setProg = {setProg} sts = {sts} rows = {rows}/>}/>
+          <Route path="/gauge" element={<Gauge setProg = {setProg} sts = {sts} setSts = {setSts} rows = {rows} setRows = {setRows}/>} />
+          <Route path="/measure" element={<Measure units = {units} setProg = {setProg} chest = {chest} setChest = {setChest} neck = {neck} setNeck = {setNeck} armhole = {armhole} setArmhole = {setArmhole} length = {length} setLength = {setLength}/>} />
+          <Route path="/pattern" element={<Pattern setProg = {setProg} sts = {sts} rows = {rows} chest = {chest} neck = {neck} armhole = {armhole}/>}/>
         </Routes>
       </UnitsContext.Provider>
     </>

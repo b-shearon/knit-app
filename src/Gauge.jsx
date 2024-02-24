@@ -1,9 +1,8 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { Card, Button, Col, Row } from "react-bootstrap";
 import UnitsContext from "./contexts/UnitsContext.js";
-import ProgressBar from 'react-bootstrap/ProgressBar';
 
 export default function Gauge(props) {
 
@@ -15,11 +14,11 @@ export default function Gauge(props) {
 
     return (
         <div>
-            <h2>Unit Selector</h2>
+            <h2 style={{marginTop: 70}}>Unit Selector</h2>
             <p>Please select whether you'd like to use metric units (centimeters) or imperial units (inches).</p>
             <Row className="justify-content-md-center">
                 <Col md = "auto">
-                <select className="form-select" aria-label="Gauge size selector" defaultValue={selectedUnits.units} onChange={(e) => selectedUnits.setUnits(e.target.value) }>
+                <select className="form-select" aria-label="Gauge units selector" defaultValue={selectedUnits.units} onChange={(e) => selectedUnits.setUnits(e.target.value) }>
                 <option value="metric">Metric</option>
                 <option value="imperial">Imperial</option>
                 </select>
@@ -36,14 +35,14 @@ export default function Gauge(props) {
             <Form>
                 <Form.Group as = {Row} controlId="gaugeSts" className="justify-content-md-center">
                     <Col md="auto">
-                    <Form.Control type="sts" placeholder={props.sts} onChange={(e) => props.setSts(e.target.value)}/>
+                    <Form.Control value={props.sts ? props.sts : ""} placeholder = {0} onChange={(e) => props.setSts(e.target.value)}/>
                     </Col>
                     <Form.Label column md="auto">
                     {' '}stitches by{' '}
                     </Form.Label>
 
                     <Col md="auto">
-                    <Form.Control type="rows" placeholder={props.rows} onChange={(e) => props.setRows(e.target.value)}/>
+                    <Form.Control value={props.rows ? props.rows : ""} placeholder = {0} onChange={(e) => props.setRows(e.target.value)}/>
                     </Col>
 
                     <Form.Label column md="auto">

@@ -10,7 +10,7 @@ export default function Home(props) {
   return (
     <>
         <div>
-            <h1>Knit Sweater Calculator</h1>
+            <h1 style={{marginTop: 70}}>Knit Sweater Calculator</h1>
             <p>Welcome to the knit sweater calculator. By inputting your guage, measurements, and style preferences, this calculator will make a drop-shoulder sweater pattern tailored to you!</p>
             <Link to="/gauge"><button>Start</button></Link>
         </div>

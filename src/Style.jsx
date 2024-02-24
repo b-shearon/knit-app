@@ -9,7 +9,7 @@ export default function Style() {
       <>
         <hr/>
 
-        <h2>Style</h2>
+        <h2 style={{marginTop: 70}}>Style</h2>
         <p>Select the following style requirements you want your sweater to have.</p>
 
         <h3>Neckline</h3>

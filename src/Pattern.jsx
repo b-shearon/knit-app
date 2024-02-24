@@ -10,7 +10,8 @@ export default function Pattern(props) {
   return (
     <>
         <div>
-            <h1>Pattern</h1>
+            <h1 style={{marginTop: 70}}>Pattern</h1>
+            <hr/>
             <h3>Abbreviations</h3>
             <table class="table">
               <thead>
@@ -48,7 +49,7 @@ export default function Pattern(props) {
             </table>
 
             <h3>Body</h3>
-            <p>Cast on xx stitches using your selected needles and yarn.</p>
+            <p>Cast on {props.chest * props.sts} stitches using your selected needles and yarn.</p>
             <p>Knit in stockinette stitch until you panel measures xx xx(in/cm). Make sure to end on a WS row.</p>
         </div>
 

@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import {Col, Row } from "react-bootstrap";
-import ProgressBar from 'react-bootstrap/ProgressBar';
-
+import UnitsContext from "./contexts/UnitsContext.js";
 
 export default function Measure(props) {
+
+    //Selected units to use throughout pattern
+    const selectedUnits = useContext(UnitsContext);
 
     //Set the users current progress through the questions
     props.setProg(50);
 
     return (
       <>
-          <h2>Measurements</h2>
+          <h2 style={{marginTop: 70}}>Measurements</h2>
           <p>These are the measurements you want the final sweater to have. If you have a sweater that you like the fit of and want to mimic, it's recommended that you reference it's measurements.</p>
 
           <hr/>
@@ -20,12 +22,27 @@ export default function Measure(props) {
           <h4>Chest measurement</h4>
           <p>Take a measurement of the fullest part of your chest / bust using a tape measure, keeping the measuring tape parellel to the floor, and input it below.</p>
           <p>The ease of your sweater determines the final fit. Negative ease means the chest measurement of your sweater is less than your bust measurement. Positive ease means the chest measurement of your sweater is greater than your chest measurement. No ease means your sweater will be fitted to your bust exactly.</p>
-          <p></p>
           <Form>
                 <Form.Group as = {Row} controlId="chestMeas" className="justify-content-md-center">
                   <Col md="auto" >
-                    <Form.Control type="cheastMeasurement" placeholder="0" />
+                    <Form.Control type="cheastMeasurement" placeholder={props.chest} onChange={(e) => props.setChest(e.target.value)}/>
                     </Col>
+                    <Form.Label column md="auto">
+                    {selectedUnits.units === "metric" ? " centimeters" : " inches"}
+                    </Form.Label>
+                </Form.Group>
+            </Form>
+
+          <h4>Length measurement</h4>
+          <p>The desired length of your sweater, from shoulder to hem.</p>
+          <Form>
+                <Form.Group as = {Row} controlId="lengthMeas" className="justify-content-md-center">
+                  <Col md="auto" >
+                    <Form.Control placeholder={props.length} onChange={(e) => props.setLength(e.target.value)}/>
+                    </Col>
+                    <Form.Label column md="auto">
+                    {selectedUnits.units === "metric" ? " centimeters" : " inches"}
+                    </Form.Label>
                 </Form.Group>
             </Form>
 
