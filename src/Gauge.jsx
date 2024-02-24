@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import { Card, Button, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import UnitsContext from "./contexts/UnitsContext.js";
 
 export default function Gauge(props) {

@@ -1,8 +1,11 @@
-import * as React from 'react';
+import UnitsContext from "./contexts/UnitsContext.js";
+import { useContext } from "react";
 import { Link } from 'react-router-dom';
-import './App.css'
 
 export default function Pattern(props) {
+
+  //Selected units to use throughout pattern
+  const selectedUnits = useContext(UnitsContext);
 
   //Set the users current progress through the questions
   props.setProg(100);
@@ -12,7 +15,7 @@ export default function Pattern(props) {
         <div>
             <h1 style={{marginTop: 70}}>Pattern</h1>
             <hr/>
-            <h3>Abbreviations</h3>
+            <h2>Abbreviations</h2>
             <table class="table">
               <thead>
                 <tr>
@@ -47,10 +50,41 @@ export default function Pattern(props) {
                 </tr>
               </tbody>
             </table>
+            <hr/>
 
-            <h3>Body</h3>
-            <p>Cast on {props.chest * props.sts} stitches using your selected needles and yarn.</p>
-            <p>Knit in stockinette stitch until you panel measures xx xx(in/cm). Make sure to end on a WS row.</p>
+            <h2 style = {{fontWeight: "bold"}}>BODY</h2>
+            <h4>Front</h4>
+            <p>Cast on {selectedUnits.units === "metric" ? 
+                        Math.floor(props.chest * (props.sts / 10)) + " " : 
+                        Math.floor(props.chest * (props.sts / 4)) + " "}   
+               stitches using your selected needles and yarn.</p>
+            <p>Knit in stockinette stitch until you panel measures {selectedUnits.units === "metric" ? 
+                        props.length + " centimeters " :
+                        props.length + " inches "
+                      }long. Make sure to end on a WS row.</p>
+            <p>Cast off.</p>
+            
+            <h4>Back</h4>
+            <p>Cast on {selectedUnits.units === "metric" ? 
+                        Math.floor(props.chest * (props.sts / 10)) + " " : 
+                        Math.floor(props.chest * (props.sts / 4)) + " "}   
+               stitches using your selected needles and yarn.</p>
+            <p>Knit in stockinette stitch until you panel measures {selectedUnits.units === "metric" ? 
+                        props.length + " centimeters " :
+                        props.length + " inches "
+                      }long. Make sure to end on a WS row.</p>
+            <p>Cast off.</p>
+
+            <h2 style = {{fontWeight: "bold"}}>SLEEVES</h2>
+            <p>Cast on xx stitches.</p>
+            <p>Knit in stockinette stitch until your sleeve measures {selectedUnits.units === "metric" ? 
+                        props.length + " centimeters " :
+                        props.length + " inches "
+                      }long. Make sure to end on a WS row.</p>
+            <p>Cast off.</p>
+            <p>Repeat these steps a second time to make the other sleeve.</p>
+
+            <h2 style = {{fontWeight: "bold"}}>ASSEMBLY</h2>
         </div>
 
 
