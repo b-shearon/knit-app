@@ -11,8 +11,11 @@ export default function Measure(props) {
 
     //Set the users current progress through the questions
     useEffect(() => {
-      props.setProg(50);
+      props.setProg(40);
     }, []);
+
+    //Chest measurement: Any value between 1 and (254 centimeters or 100 inches)
+    //Length: Any value between 1 and (254 centimeters or 100 inches)
 
     return (
       <>
@@ -22,12 +25,11 @@ export default function Measure(props) {
           <hr/>
 
           <h4>Chest measurement</h4>
-          <p>Take a measurement of the fullest part of your chest / bust using a tape measure, keeping the measuring tape parellel to the floor, and input it below.</p>
-          <p>The ease of your sweater determines the final fit. Negative ease means the chest measurement of your sweater is less than your bust measurement. Positive ease means the chest measurement of your sweater is greater than your chest measurement. No ease means your sweater will be fitted to your bust exactly.</p>
+          <p>The desired width of the chest of your sweater, from pit to pit.</p>
           <Form>
                 <Form.Group as = {Row} controlId="chestMeas" className="justify-content-md-center">
                   <Col md="auto" >
-                    <Form.Control type="cheastMeasurement" placeholder={props.chest} onChange={(e) => props.setChest(e.target.value)}/>
+                    <Form.Control value={props.chest ? props.chest : ""} placeholder = {0} onChange={(e) => props.setChest(e.target.value)}/>
                     </Col>
                     <Form.Label column md="auto">
                     {selectedUnits.units === "metric" ? " centimeters" : " inches"}
@@ -40,25 +42,16 @@ export default function Measure(props) {
           <Form>
                 <Form.Group as = {Row} controlId="lengthMeas" className="justify-content-md-center">
                   <Col md="auto" >
-                    <Form.Control placeholder={props.length} onChange={(e) => props.setLength(e.target.value)}/>
+                    <Form.Control value={props.length ? props.length : ""} placeholder={0} onChange={(e) => props.setLength(e.target.value)}/>
                     </Col>
                     <Form.Label column md="auto">
                     {selectedUnits.units === "metric" ? " centimeters" : " inches"}
                     </Form.Label>
                 </Form.Group>
             </Form>
-
-          <h4>Neck measurement</h4>
-          <p>The desired width of the neck at the shoulders.</p>
-
-          <h4>Armhole depth measurement</h4>
-          <p>The desired length from the shoulder to the bottom of the armhole. </p>
-          <p>For a form-fitting sweater, this is about the length of your shoulder to your armpit. For a looser fit, add the desired inches on top of your shoulder to armpit length.</p>
-
-
           <Link to="/gauge"><button>Back</button></Link>
           {' '}
-          <Link to="/hem"><button>Next</button></Link>
+          <Link to="/measure2"><button>Next</button></Link>
       </>
     );
   }

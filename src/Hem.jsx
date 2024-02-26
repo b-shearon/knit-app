@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import UnitsContext from "./contexts/UnitsContext.js";
+import { useEffect, useContext } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { Card, Col } from "react-bootstrap";
@@ -6,9 +7,12 @@ import { Card, Col } from "react-bootstrap";
 
 export default function Style(props) {
 
+    //Selected units to use throughout pattern
+    const selectedUnits = useContext(UnitsContext);
+
     //Set the users current progress through the questions
     useEffect(() => {
-      props.setProg(65);
+      props.setProg(80);
     }, []);
 
     return (
@@ -23,14 +27,20 @@ export default function Style(props) {
         </Form.Select>
 
         {props.hem == 1 ? <>
-        <p style={{marginTop: "2em"}}>Input the desired length of your ribbing</p> 
-        <p>Body hem: {props.bodyRibbing}</p>
-        <Form.Range defaultValue = {props.bodyRibbing} onChange={(e) => props.setBodyRibbing(e.target.value)} min="1" max="20"/>
-        <p>Sleeve hems: {props.sleeveRibbing}</p>
-        <Form.Range defaultValue = {props.sleeveRibbing} onChange={(e) => props.setSleeveRibbing(e.target.value)} min="1" max="20"/>
+          <p style={{marginTop: "2em"}}>Input the desired length of your ribbing</p> 
+          <p>Body hem: {props.bodyRibbing} {selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
+            <Form.Range aria-label="Body Ribbing Length Slider" 
+            defaultValue = {props.bodyRibbing} onChange={(e) => props.setBodyRibbing(e.target.value)} 
+            min="1" max={props.length - props.armhole} 
+            step={selectedUnits.units === "metric" ? 1 : 0.5}/>
+          <p>Sleeve hems: {props.sleeveRibbing} {selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
+            <Form.Range aria-label="Sleeve Cuff Ribbing Length Slider" 
+            defaultValue = {props.sleeveRibbing} onChange={(e) => props.setSleeveRibbing(e.target.value)} 
+            min="1" max={props.sleeve} 
+            step={selectedUnits.units === "metric" ? 1 : 0.5}/>
         </> : <></>}
 
-        <Link to="/measure"><button style={{marginTop: "1.5em"}}>Back</button></Link>
+        <Link to="/measure2"><button>Back</button></Link>
             {' '}
         <Link to="/pattern"><button>Next</button></Link>
                 

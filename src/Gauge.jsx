@@ -11,7 +11,7 @@ export default function Gauge(props) {
 
     //Set the users current progress through the questions
     useEffect(() => {
-        props.setProg(25);
+        props.setProg(20);
       }, []);
 
     return (
