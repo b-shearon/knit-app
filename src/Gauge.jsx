@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import UnitsContext from "./contexts/UnitsContext.js";
+import { useContext, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { Col, Row } from "react-bootstrap";
-import UnitsContext from "./contexts/UnitsContext.js";
 
 export default function Gauge(props) {
 
@@ -10,7 +10,9 @@ export default function Gauge(props) {
     const selectedUnits = useContext(UnitsContext);
 
     //Set the users current progress through the questions
-    props.setProg(25);
+    useEffect(() => {
+        props.setProg(25);
+      }, []);
 
     return (
         <div>
@@ -36,6 +38,9 @@ export default function Gauge(props) {
                 <Form.Group as = {Row} controlId="gaugeSts" className="justify-content-md-center">
                     <Col md="auto">
                     <Form.Control value={props.sts ? props.sts : ""} placeholder = {0} onChange={(e) => props.setSts(e.target.value)}/>
+                    <Form.Control.Feedback type="invalid">
+                    Please provide a valid city.
+                    </Form.Control.Feedback>
                     </Col>
                     <Form.Label column md="auto">
                     {' '}stitches by{' '}

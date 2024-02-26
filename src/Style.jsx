@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { Card, Button, Col } from "react-bootstrap";
 
 
-export default function Style() {
+export default function Style(props) {
+
+    //Set the users current progress through the questions
+    useEffect(() => {
+      props.setProg(75);
+    }, []);
+
     return (
       <>
         <hr/>
@@ -26,7 +32,6 @@ export default function Style() {
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             </Card>
-        <h3>Hem</h3>
       </>
     );
   }

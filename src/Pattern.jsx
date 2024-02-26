@@ -1,5 +1,5 @@
 import UnitsContext from "./contexts/UnitsContext.js";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 export default function Pattern(props) {
@@ -8,7 +8,9 @@ export default function Pattern(props) {
   const selectedUnits = useContext(UnitsContext);
 
   //Set the users current progress through the questions
-  props.setProg(100);
+  useEffect(() => {
+    props.setProg(100);
+  }, []);
 
   return (
     <>
@@ -16,7 +18,7 @@ export default function Pattern(props) {
             <h1 style={{marginTop: 70}}>Pattern</h1>
             <hr/>
             <h2>Abbreviations</h2>
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">Symbol</th>
@@ -41,6 +43,10 @@ export default function Pattern(props) {
                   <td>*Knit 1 row, purl 1 row, repeat from *</td>
                 </tr>
                 <tr>
+                  <td scope="row">1x1 ribbing</td>
+                  <td>*K1 P1 for one row, P1 K1 for the next row, repeat from *</td>
+                </tr>
+                <tr>
                   <td scope="row">RS</td>
                   <td>'Right side', the knit side of your work</td>
                 </tr>
@@ -58,10 +64,12 @@ export default function Pattern(props) {
                         Math.floor(props.chest * (props.sts / 10)) + " " : 
                         Math.floor(props.chest * (props.sts / 4)) + " "}   
                stitches using your selected needles and yarn.</p>
+            {props.hem == 1 ? <p>Knit xx rows in 1x1 ribbing.</p> : <></>}
+            {props.hem == 2 ? <p>Knit xx rows in stockinette stitch.</p> : <></>}
             <p>Knit in stockinette stitch until you panel measures {selectedUnits.units === "metric" ? 
                         props.length + " centimeters " :
                         props.length + " inches "
-                      }long. Make sure to end on a WS row.</p>
+                      }long from the bottom edge. Make sure to end on a WS row.</p>
             <p>Cast off.</p>
             
             <h4>Back</h4>
@@ -88,7 +96,7 @@ export default function Pattern(props) {
         </div>
 
 
-        <Link to="/measure"><button>Back</button></Link>
+        <Link to="/hem"><button>Back</button></Link>
     </>
   );
 }

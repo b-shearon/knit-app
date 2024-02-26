@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import UnitsContext from "./contexts/UnitsContext.js";
+import { useContext, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import {Col, Row } from "react-bootstrap";
-import UnitsContext from "./contexts/UnitsContext.js";
 
 export default function Measure(props) {
 
@@ -10,7 +10,9 @@ export default function Measure(props) {
     const selectedUnits = useContext(UnitsContext);
 
     //Set the users current progress through the questions
-    props.setProg(50);
+    useEffect(() => {
+      props.setProg(50);
+    }, []);
 
     return (
       <>
@@ -56,7 +58,7 @@ export default function Measure(props) {
 
           <Link to="/gauge"><button>Back</button></Link>
           {' '}
-          <Link to="/pattern"><button>Next</button></Link>
+          <Link to="/hem"><button>Next</button></Link>
       </>
     );
   }

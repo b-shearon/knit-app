@@ -1,8 +1,10 @@
+import './App.css'
 import Gauge from "./Gauge.jsx";
 import Home from "./Home";
 import Measure from './Measure';
+import Style from './Style.jsx';
+import Hem from './Hem.jsx';
 import Pattern from './Pattern.jsx';
-import './App.css'
 import { useState, useContext } from "react";
 import {Routes, Route} from 'react-router-dom';
 import UnitsContext from "./contexts/UnitsContext.js";
@@ -27,6 +29,9 @@ function App() {
   const [neck, setNeck] = useState(0);
   const [armhole, setArmhole] = useState(0);
   const [sleeve, setSleeve] = useState(0);
+  const [hem, setHem] = useState(0);
+  const [bodyRibbing, setBodyRibbing] = useState(0);
+  const [sleeveRibbing, setSleeveRibbing] = useState(0);
 
   return (
     <>
@@ -36,8 +41,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home setProg = {setProg}/>}/>
           <Route path="/gauge" element={<Gauge setProg = {setProg} sts = {sts} setSts = {setSts} rows = {rows} setRows = {setRows}/>} />
-          <Route path="/measure" element={<Measure units = {units} setProg = {setProg} chest = {chest} setChest = {setChest} neck = {neck} setNeck = {setNeck} armhole = {armhole} setArmhole = {setArmhole} length = {length} setLength = {setLength}/>} />
-          <Route path="/pattern" element={<Pattern setProg = {setProg} sts = {sts} rows = {rows} chest = {chest} length = {length} neck = {neck} armhole = {armhole}/>}/>
+          <Route path="/measure" element={<Measure setProg = {setProg} units = {units} chest = {chest} setChest = {setChest} neck = {neck} setNeck = {setNeck} armhole = {armhole} setArmhole = {setArmhole} length = {length} setLength = {setLength}/>} />
+          <Route path = "/style" element={<Style setProg = {setProg}/>}/>
+          <Route path = "/hem" element={<Hem setProg = {setProg} hem = {hem} setHem = {setHem} length = {length} armhole = {armhole} sleeve = {sleeve} bodyRibbing = {bodyRibbing} setBodyRibbing = {setBodyRibbing} sleeveRibbing = {sleeveRibbing} setSleeveRibbing = {setSleeveRibbing}/>}/>
+          <Route path="/pattern" element={<Pattern setProg = {setProg} sts = {sts} rows = {rows} chest = {chest} length = {length} neck = {neck} armhole = {armhole} hem = {hem} bodyRibbing = {bodyRibbing}/>}/>
         </Routes>
       </UnitsContext.Provider>
     </>
