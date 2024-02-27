@@ -1,6 +1,7 @@
 import UnitsContext from "./contexts/UnitsContext.js";
 import { useContext, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
 
 export default function Pattern(props) {
 
@@ -109,7 +110,7 @@ export default function Pattern(props) {
         </div>
 
 
-        <Link to="/hem"><button>Back</button></Link>
+        <Link to="/hem"><Button variant="dark">Back</Button></Link>
     </>
   );
 }

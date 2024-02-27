@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
 import './App.css'
 
 export default function Home(props) {
@@ -14,7 +15,7 @@ export default function Home(props) {
         <div>
             <h1 style={{marginTop: 70}}>Knit Sweater Calculator</h1>
             <p>Welcome to the knit sweater calculator. By inputting your guage, measurements, and style preferences, this calculator will make a drop-shoulder sweater pattern tailored to you!</p>
-            <Link to="/gauge"><button>Start</button></Link>
+            <Link to="/gauge"><Button variant="dark">Start</Button></Link>
         </div>
     </>
   );

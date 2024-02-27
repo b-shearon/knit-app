@@ -1,8 +1,8 @@
 import UnitsContext from "./contexts/UnitsContext.js";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import {Col, Row } from "react-bootstrap";
+import {Col, Row, Button } from "react-bootstrap";
 
 export default function Measure(props) {
 
@@ -20,23 +20,28 @@ export default function Measure(props) {
 
     return (
       <>
-        <h2>Neck measurement</h2>
+        <h2 style={{marginTop: 70}}>Neck measurement</h2>
         <p>The desired width of the neck.</p>
-        <Form>
-          <Form.Range defaultValue = {props.neck} onChange={(e) => props.setNeck(e.target.value)} 
-            min="1" max={selectedUnits.units === "metric" ? props.chest - 5 : props.chest - 2}
-            step={selectedUnits.units === "metric" ? 1 : 0.5}/>
-        </Form>
+        <p>{props.neck}{props.neck <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
 
+          <Form.Range defaultValue = {props.neck} onChange={(e) => props.setNeck(e.target.value)} 
+            min="1" max={props.chest}
+            step={selectedUnits.units === "metric" ? 1 : 0.5}/>
+
+        <hr/>
 
           <h2>Armhole depth measurement</h2>
           <p>The desired length from the shoulder to the bottom of the armhole. </p>
           <p>For a form-fitting sweater, this is about the length of your shoulder to your armpit. For a looser fit, add the desired inches on top of your shoulder to armpit length.</p>
+          <p>{props.armhole}{props.armhole <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
 
+          <Form.Range defaultValue = {props.armhole} onChange={(e) => props.setArmhole(e.target.value)} 
+            min="1" max={props.length}
+            step={selectedUnits.units === "metric" ? 1 : 0.5}/>
 
-          <Link to="/measure"><button>Back</button></Link>
+          <Link to="/measure"><Button variant="dark">Back</Button></Link>
           {' '}
-          <Link to="/hem"><button>Next</button></Link>
+          <Link to="/hem"><Button variant="dark">Next</Button></Link>
       </>
     );
   }

@@ -27,12 +27,12 @@ function App() {
   //User measurements
   const [chest, setChest] = useState(0);
   const [length, setLength] = useState(0);
-  const [neck, setNeck] = useState(0);
-  const [armhole, setArmhole] = useState(0);
-  const [sleeve, setSleeve] = useState(0);
+  const [neck, setNeck] = useState(1);
+  const [armhole, setArmhole] = useState(1);
+  const [sleeve, setSleeve] = useState(1);
   const [hem, setHem] = useState(0);
-  const [bodyRibbing, setBodyRibbing] = useState(0);
-  const [sleeveRibbing, setSleeveRibbing] = useState(0);
+  const [bodyRibbing, setBodyRibbing] = useState(1);
+  const [sleeveRibbing, setSleeveRibbing] = useState(1);
 
   return (
     <>

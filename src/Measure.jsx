@@ -2,7 +2,7 @@ import UnitsContext from "./contexts/UnitsContext.js";
 import { useContext, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import {Col, Row } from "react-bootstrap";
+import {Col, Row, Button } from "react-bootstrap";
 
 export default function Measure(props) {
 
@@ -49,9 +49,9 @@ export default function Measure(props) {
                     </Form.Label>
                 </Form.Group>
             </Form>
-          <Link to="/gauge"><button>Back</button></Link>
+          <Link to="/gauge"><Button variant="dark">Back</Button></Link>
           {' '}
-          <Link to="/measure2"><button>Next</button></Link>
+          <Link to="/measure2"><Button variant="dark">Next</Button></Link>
       </>
     );
   }
