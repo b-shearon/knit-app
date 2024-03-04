@@ -83,7 +83,10 @@ export default function Pattern(props) {
             <p>Repeat the steps for the front to make the back panel.</p>
 
             <h2 style = {{fontWeight: "bold", marginTop: "1.5em"}}>SLEEVES</h2>
-            <p>Cast on xx stitches.</p>
+            <p>Cast on {selectedUnits.units === "metric" ? 
+                        (Math.floor(props.armhole * (props.sts / 10)) + (Math.floor(props.armhole * (props.sts / 10)) % 2)) + " " :
+                        (Math.floor(props.armhole * (props.sts / 4)))
+            } stitches.</p>
             {props.hem == 1 ? <p>Knit in 1x1 ribbing until your panel measures {selectedUnits.units === "metric" ? 
                         props.sleeveRibbing + " centimeters " :
                         props.sleeveRibbing + " inches "
@@ -95,18 +98,28 @@ export default function Pattern(props) {
             <p>Knit in stockinette stitch until your sleeve measures {selectedUnits.units === "metric" ? 
                         props.length + " centimeters " :
                         props.length + " inches "
-                      }long from the bottom edge. Make sure to end on a WS row.</p>
+                      }xxxx long from the bottom edge. Make sure to end on a WS row.</p>
             <p>Cast off.</p>
             <p>Repeat these steps a second time to make the other sleeve.</p>
 
             <h2 style = {{fontWeight: "bold", marginTop: "1.5em"}}>ASSEMBLY</h2>
             <p>You should have 4 total completed pieces: 1 front panel, 1 back panel, and 2 sleeve panels.</p>
             <p>Lay your back piece down with the WS facing up towards you, and lay the front panel on top of it with the WS facing down. </p>
-            <p>Starting from the hem, sew the front panel to the back panel at the sides. Stop sewing each side seam when it reaches {Math.floor(props.length - props.armhole)}
+            <p>First, you will sew the shoulder seams.</p>
+            <p>Starting from the top left corner, sew from left to right until your seam is xx inches/cm long. </p>
+            <p>Starting from the top right corner, sew from right to left until your seam is xx inches/cm long.</p>
+            <p>Both of your shoulder seams are now complete, and the hole left is the neck opening.</p>
+            <p>Next, starting from the body hem, sew the front panel to the back panel at the sides. Stop sewing each side seam when it reaches {Math.floor(props.length - props.armhole)}
             {selectedUnits.units === "metric" ? 
                         " centimeters " : 
                         " inches "
                         }long.</p>
+            <p>Both of your side seams are now complete, and the holes left are the armholes.</p>
+            <p>Take one of the sleeve pieces and sew it into the armhole, working from the armpit to the top of the shoulder, and then down the other armhole side ending back at the armpit.</p>
+            <p>Repeat this step with the other sleeve.</p>
+            <p>Lastly, sew the underarm seam together for each armpit, starting from the armpit and ending at the hem.</p>
+            <p>Make sure to secure all sewing done with a few knots, and weave in all your ends.</p>
+            <p>Congrats, you're sweater is complete!</p>
         </div>
 
 

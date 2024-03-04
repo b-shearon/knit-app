@@ -54,15 +54,25 @@ export default function Gauge(props) {
             <Form validated={validated} onSubmit={handleSubmit}>
                 <Form.Group as = {Row} controlId="gaugeSts" className="justify-content-md-center">
                     <Col md="auto">
-                    <Form.Control required value={props.sts ? props.sts : ""} placeholder = {0} onChange={(e) => props.setSts(e.target.value)}/>
+                    <Form.Control required  type="number" 
+                    min = "4"
+                    max = "60"
+                    value={props.sts ? props.sts : ""} placeholder = {0} 
+                    onChange={(e) => props.setSts(e.target.value)}/>
+                        <Form.Control.Feedback type="invalid">
+                        Please provide a valid city.
+                        </Form.Control.Feedback>
                     </Col>
-
                     <Form.Label column md="auto">
                     {' '}stitches by{' '}
                     </Form.Label>
 
                     <Col md="auto">
-                    <Form.Control required value={props.rows ? props.rows : ""} placeholder = {0} onChange={(e) => props.setRows(e.target.value)}/>
+                    <Form.Control required type="number" 
+                    min = "4"
+                    max = "80"
+                    value={props.rows ? props.rows : ""} placeholder = {0} 
+                    onChange={(e) => props.setRows(e.target.value)}/>
                     </Col>
 
                     <Form.Label column md="auto">
