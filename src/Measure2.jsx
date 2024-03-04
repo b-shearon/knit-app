@@ -2,7 +2,7 @@ import UnitsContext from "./contexts/UnitsContext.js";
 import { useContext, useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import {Col, Row, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default function Measure(props) {
 
@@ -11,7 +11,7 @@ export default function Measure(props) {
 
     //Set the users current progress through the questions
     useEffect(() => {
-      props.setProg(60);
+      props.setProg(62);
     }, []);
 
     //Neck measurement: Any value between 1 and the length of the chest - (5 centimeters or 2 inches) to make sure user can't make neck too wide.

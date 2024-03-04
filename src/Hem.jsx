@@ -12,7 +12,7 @@ export default function Style(props) {
 
     //Set the users current progress through the questions
     useEffect(() => {
-      props.setProg(80);
+      props.setProg(77);
     }, []);
 
     return (
@@ -29,15 +29,15 @@ export default function Style(props) {
         {props.hem == 1 ? <>
           <p style={{marginTop: "2em"}}>Select the desired length of your ribbing.</p> 
           <p>Body hem: {props.bodyRibbing} {props.bodyRibbing <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
-            <Form.Range aria-label="Body Ribbing Length Slider" 
-            defaultValue = {props.bodyRibbing} onChange={(e) => props.setBodyRibbing(e.target.value)} 
-            min="1" max={props.length - props.armhole} 
-            step={selectedUnits.units === "metric" ? 1 : 0.5}/>
+              <Form.Range aria-label="Body Ribbing Length Slider" 
+              defaultValue = {props.bodyRibbing} onChange={(e) => props.setBodyRibbing(e.target.value)} 
+              min="1" max={props.length - props.armhole} 
+              step={selectedUnits.units === "metric" ? 1 : 0.5}/>
           <p>Sleeve hems: {props.sleeveRibbing} {props.sleeveRibbing <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
-            <Form.Range aria-label="Sleeve Cuff Ribbing Length Slider" 
-            defaultValue = {props.sleeveRibbing} onChange={(e) => props.setSleeveRibbing(e.target.value)} 
-            min="1" max={props.sleeve} 
-            step={selectedUnits.units === "metric" ? 1 : 0.5}/>
+              <Form.Range aria-label="Sleeve Cuff Ribbing Length Slider" 
+              defaultValue = {props.sleeveRibbing} onChange={(e) => props.setSleeveRibbing(e.target.value)} 
+              min="1" max={props.sleeve} 
+              step={selectedUnits.units === "metric" ? 1 : 0.5}/>
         </> : <></>}
 
         <Link to="/measure2"><Button variant="dark">Back</Button></Link>

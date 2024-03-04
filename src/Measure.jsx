@@ -11,7 +11,7 @@ export default function Measure(props) {
 
     //Set the users current progress through the questions
     useEffect(() => {
-      props.setProg(40);
+      props.setProg(45);
     }, []);
 
     const [validated, setValidated] = useState(false);
@@ -40,7 +40,7 @@ export default function Measure(props) {
           <hr/>
 
           <h4>Chest measurement</h4>
-          <p>The desired width of the chest of your sweater, from pit to pit.</p>
+          <p>The desired width of the chest of the sweater, from armpit to armpit.</p>
           {selectedUnits.units === "metric" ?
           <p>For example, for a sweater with a total chest circumference of 100cm, the width of the chest pit to pit would be 100 / 2 = 50cm.</p> : 
           <p>For example, for a sweater with a total chest circumference of 40", the width of the chest pit to pit would be 40 / 2 = 20".</p>
@@ -59,7 +59,7 @@ export default function Measure(props) {
                     </Form.Label>
                 </Form.Group>
           <h4 style={{marginTop: "1.5em"}}>Length measurement</h4>
-          <p>The desired length of your sweater, from shoulder to hem.</p>
+          <p>The desired length of the sweater, from shoulder to hem.</p>
                 <Form.Group as = {Row} controlId="lengthMeas" className="justify-content-md-center">
                   <Col md="auto" >
                     <Form.Control required type = "number"
@@ -72,7 +72,25 @@ export default function Measure(props) {
                     {selectedUnits.units === "metric" ? " centimeters" : " inches"}
                     </Form.Label>
                 </Form.Group>
-                <Link to="/gauge"><Button variant="dark">Back</Button></Link>
+
+          <h4 style={{marginTop: "1.5em"}}>Sleeve length measurement</h4>
+          <p>The desired length of the sleeves, from shoulder to cuff.</p>
+                <Form.Group as = {Row} controlId="sleeveMeas" className="justify-content-md-center">
+                  <Col md="auto" >
+                    <Form.Control required type="number"
+                    min = {selectedUnits.units === "metric" ? "3" : "1"} 
+                    max = {selectedUnits.units === "metric" ? "508" : "200"} 
+                    value={props.sleeve ? props.sleeve : ""} 
+                    placeholder = {0} onChange={(e) => props.setSleeve(e.target.value)}/>
+                    </Col>
+                    <Form.Label column md="auto">
+                    {selectedUnits.units === "metric" ? " centimeters" : " inches"}
+                    </Form.Label>
+                </Form.Group>
+
+
+
+                <Link to="/shoulder"><Button variant="dark">Back</Button></Link>
                 {' '}
                 <Button type = "submit" variant="dark">Next</Button>
             </Form>

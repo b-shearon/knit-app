@@ -11,7 +11,7 @@ export default function Gauge(props) {
 
     //Set the users current progress through the questions
     useEffect(() => {
-        props.setProg(20);
+        props.setProg(15);
       }, []);
 
     
@@ -26,7 +26,7 @@ export default function Gauge(props) {
       }
   
       setValidated(true);
-      navigate('/measure');
+      navigate('/shoulder');
     };
 
     const navigate = useNavigate();

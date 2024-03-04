@@ -85,7 +85,7 @@ export default function Pattern(props) {
             <h2 style = {{fontWeight: "bold", marginTop: "1.5em"}}>SLEEVES</h2>
             <p>Cast on {selectedUnits.units === "metric" ? 
                         (Math.floor(props.armhole * (props.sts / 10)) + (Math.floor(props.armhole * (props.sts / 10)) % 2)) + " " :
-                        (Math.floor(props.armhole * (props.sts / 4)))
+                        (Math.floor(props.armhole * (props.sts / 4)) + (Math.floor(props.armhole * (props.sts / 4)) % 2)) + " " 
             } stitches.</p>
             {props.hem == 1 ? <p>Knit in 1x1 ribbing until your panel measures {selectedUnits.units === "metric" ? 
                         props.sleeveRibbing + " centimeters " :
@@ -96,11 +96,12 @@ export default function Pattern(props) {
                       <p>Next, pick up the stitch on the cast-on edge that is parellel to the stitch on your needle.</p></>
                       : <></>}
             <p>Knit in stockinette stitch until your sleeve measures {selectedUnits.units === "metric" ? 
-                        props.length + " centimeters " :
-                        props.length + " inches "
-                      }xxxx long from the bottom edge. Make sure to end on a WS row.</p>
+                        (props.sleeve - ((props.chest - props.shoulder) / 2)) + " centimeters " :
+                        (props.sleeve - ((props.chest - props.shoulder) / 2)) + " inches "
+                      }long from the bottom edge. Make sure to end on a WS row.</p>
             <p>Cast off.</p>
             <p>Repeat these steps a second time to make the other sleeve.</p>
+            <p>(Note: Your finished sleeve length maybe shorter than the desired sleeve length measurement you specified earlier. This is intended. Because the nature of the drop shoulder, the part of the sweater body that extends past your shoulder will add length to your sleeves to make up the difference.)</p>
 
             <h2 style = {{fontWeight: "bold", marginTop: "1.5em"}}>ASSEMBLY</h2>
             <p>You should have 4 total completed pieces: 1 front panel, 1 back panel, and 2 sleeve panels.</p>
@@ -121,7 +122,6 @@ export default function Pattern(props) {
             <p>Make sure to secure all sewing done with a few knots, and weave in all your ends.</p>
             <p>Congrats, you're sweater is complete!</p>
         </div>
-
 
         <Link to="/hem"><Button variant="dark">Back</Button></Link>
     </>
