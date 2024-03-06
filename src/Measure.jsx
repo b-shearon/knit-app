@@ -14,6 +14,14 @@ export default function Measure(props) {
       props.setProg(45);
     }, []);
 
+    //Change shoulder state, also resets neck measurement if needed so it can't be set higher than the shoulder width.
+    const changeLength = (val) => {
+      props.setLength(val);
+      if(val < props.armhole){
+        props.setArmhole(1);
+      }
+    };
+
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
@@ -66,7 +74,7 @@ export default function Measure(props) {
                     min = {selectedUnits.units === "metric" ? "3" : "1"} 
                     max = {selectedUnits.units === "metric" ? "508" : "200"} 
                     value={props.length ? props.length : ""} placeholder={0} 
-                    onChange={(e) => props.setLength(e.target.value)}/>
+                    onChange={(e) => changeLength(e.target.value)}/>
                     </Col>
                     <Form.Label column md="auto">
                     {selectedUnits.units === "metric" ? " centimeters" : " inches"}

@@ -14,6 +14,14 @@ export default function Shoulder(props) {
     props.setProg(30);
   }, []);
 
+  //Change shoulder state, also resets neck measurement if needed so it can't be set higher than the shoulder width.
+  const changeShoulder = (val) => {
+      props.setShoulder(val);
+      if(val < props.neck){
+        props.setNeck(1);
+      }
+  };
+
   //Form validation
   const [validated, setValidated] = useState(false);
 
@@ -42,7 +50,7 @@ export default function Shoulder(props) {
                     min = {selectedUnits.units === "metric" ? "3" : "1"} 
                     max = {selectedUnits.units === "metric" ? "508" : "200"} 
                     value={props.shoulder ? props.shoulder : ""} 
-                    placeholder = {0} onChange={(e) => props.setShoulder(e.target.value)}/>
+                    placeholder = {0} onChange={(e) => changeShoulder(e.target.value)}/>
                     </Col>
                     <Form.Label column md="auto">
                     {selectedUnits.units === "metric" ? " centimeters" : " inches"}

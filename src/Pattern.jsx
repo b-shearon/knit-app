@@ -68,15 +68,18 @@ export default function Pattern(props) {
             {props.hem == 1 ? <p>Knit in 1x1 ribbing until your panel measures {selectedUnits.units === "metric" ? 
                         props.bodyRibbing + " centimeters " :
                         props.bodyRibbing + " inches "
-                      }long from the bottom edge. Make sure to end on a WS row. </p> 
+                      }long from the bottom edge. Make sure to end with a WS row. </p> 
                       : <></>}
             {props.hem == 2 ? <><p>Knit {Math.floor(props.rows / 2)} rows in stockinette stitch.</p> 
-                      <p>Next, pick up the stitch on the cast-on edge that is parellel to the stitch on your needle.</p></>
+                      <p>* Next, pick up the edge loop on the cast-on edge that is parallel to the stitch on your needle using the left needle.</p>
+                      <p>Knit the first two stitches on your left needle together, thus knitting the edge loop and it's parallel stitch together.</p>
+                      <p>Repeat from * until you've knit all your stitches together with their corresponding edge loop, and you have no stitches left on your left needle.</p>
+                      </>
                       : <></>}
             <p>Knit in stockinette stitch until you panel measures {selectedUnits.units === "metric" ? 
                         props.length + " centimeters " :
                         props.length + " inches "
-                      }long from the bottom edge. Make sure to end on a WS row.</p>
+                      }long from the bottom edge. Make sure to end with a WS row.</p>
             <p>Cast off.</p>
             
             <h4>Back</h4>
@@ -90,15 +93,18 @@ export default function Pattern(props) {
             {props.hem == 1 ? <p>Knit in 1x1 ribbing until your panel measures {selectedUnits.units === "metric" ? 
                         props.sleeveRibbing + " centimeters " :
                         props.sleeveRibbing + " inches "
-                      }long from the bottom edge. Make sure to end on a WS row. </p> 
+                      }long from the bottom edge. Make sure to end with a WS row. </p> 
                       : <></>}
             {props.hem == 2 ? <><p>Knit {Math.floor(props.rows / 2)} rows in stockinette stitch.</p> 
-                      <p>Next, pick up the stitch on the cast-on edge that is parellel to the stitch on your needle.</p></>
+                      <p>* Next, pick up the edge loop on the cast-on edge that is parallel to the stitch on your needle using the left needle.</p>
+                      <p>Knit the first two stitches on your left needle together, thus knitting the edge loop and it's parallel stitch together.</p>
+                      <p>Repeat from * until you've knit all your stitches together with their corresponding edge loop, and you have no stitches left on your left needle.</p>
+                      </>
                       : <></>}
             <p>Knit in stockinette stitch until your sleeve measures {selectedUnits.units === "metric" ? 
                         (props.sleeve - ((props.chest - props.shoulder) / 2)) + " centimeters " :
                         (props.sleeve - ((props.chest - props.shoulder) / 2)) + " inches "
-                      }long from the bottom edge. Make sure to end on a WS row.</p>
+                      }long from the bottom edge. Make sure to end with a WS row.</p>
             <p>Cast off.</p>
             <p>Repeat these steps a second time to make the other sleeve.</p>
             <p>(Note: Your finished sleeve length maybe shorter than the desired sleeve length measurement you specified earlier. This is intended. Because the nature of the drop shoulder, the part of the sweater body that extends past your shoulder will add length to your sleeves to make up the difference.)</p>
@@ -107,8 +113,10 @@ export default function Pattern(props) {
             <p>You should have 4 total completed pieces: 1 front panel, 1 back panel, and 2 sleeve panels.</p>
             <p>Lay your back piece down with the WS facing up towards you, and lay the front panel on top of it with the WS facing down. </p>
             <p>First, you will sew the shoulder seams.</p>
-            <p>Starting from the top left corner, sew from left to right until your seam is xx inches/cm long. </p>
-            <p>Starting from the top right corner, sew from right to left until your seam is xx inches/cm long.</p>
+            <p>Starting from the top left corner, sew from left to right until your seam is {selectedUnits.units === "metric" ? 
+            ((props.chest - props.neck) / 2) + " centimeters long." : " inches long."} </p>
+            <p>Starting from the top right corner, sew from right to left until your seam is {selectedUnits.units === "metric" ? 
+            ((props.chest - props.neck) / 2) + " centimeters long." : " inches long."} </p>
             <p>Both of your shoulder seams are now complete, and the hole left is the neck opening.</p>
             <p>Next, starting from the body hem, sew the front panel to the back panel at the sides. Stop sewing each side seam when it reaches {Math.floor(props.length - props.armhole)}
             {selectedUnits.units === "metric" ? 

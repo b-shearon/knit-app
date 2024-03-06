@@ -22,10 +22,14 @@ export default function Measure(props) {
       <>
         <h2 style={{marginTop: 70}}>Neck measurement</h2>
         <p>The desired width of the neck.</p>
-        <p>{props.neck}{props.neck <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
+        <p>This measurement can't be more than your shoulder width {selectedUnits.units === "metric" 
+        ? " (" + props.shoulder + " centimeters)."
+        : " (" + props.shoulder + " inches)."}</p>
+        <p>{props.neck}{props.neck <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" 
+        : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
 
           <Form.Range defaultValue = {props.neck} onChange={(e) => props.setNeck(e.target.value)} 
-            min="1" max={props.chest}
+            min="1" max={props.shoulder}
             step={selectedUnits.units === "metric" ? 1 : 0.5}/>
 
         <hr/>
@@ -33,6 +37,9 @@ export default function Measure(props) {
           <h2>Armhole depth measurement</h2>
           <p>The desired length from the shoulder to the bottom of the armhole. </p>
           <p>For a form-fitting sweater, this is about the length of your shoulder to your armpit. For a looser fit, add the desired inches on top of your shoulder to armpit length.</p>
+          <p>This measurement can't be more than the sweater body length {selectedUnits.units === "metric" 
+          ? " (" + props.length + " centimeters)."
+          : " (" + props.length + " inches)."}</p>
           <p>{props.armhole}{props.armhole <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
 
           <Form.Range defaultValue = {props.armhole} onChange={(e) => props.setArmhole(e.target.value)} 

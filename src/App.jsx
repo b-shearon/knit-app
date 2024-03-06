@@ -44,9 +44,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home setProg = {setProg}/>}/>
           <Route path="/gauge" element={<Gauge setProg = {setProg} sts = {sts} setSts = {setSts} rows = {rows} setRows = {setRows}/>} />
-          <Route path="/shoulder" element={<Shoulder setProg = {setProg} shoulder = {shoulder} setShoulder = {setShoulder}/>}/>
-          <Route path="/measure" element={<Measure setProg = {setProg} units = {units} chest = {chest} setChest = {setChest} length = {length} setLength = {setLength} sleeve = {sleeve} setSleeve = {setSleeve}/>} />
-          <Route path="/measure2" element={<Measure2 setProg = {setProg} units = {units} chest = {chest} length = {length} neck = {neck} setNeck = {setNeck} armhole = {armhole} setArmhole = {setArmhole}/>} />
+          <Route path="/shoulder" element={<Shoulder setProg = {setProg} shoulder = {shoulder} setShoulder = {setShoulder} neck = {neck} setNeck = {setNeck}/>}/>
+          <Route path="/measure" element={<Measure setProg = {setProg} units = {units} chest = {chest} setChest = {setChest} length = {length} setLength = {setLength} armhole = {armhole} setArmhole = {setArmhole} sleeve = {sleeve} setSleeve = {setSleeve}/>} />
+          <Route path="/measure2" element={<Measure2 setProg = {setProg} units = {units} shoulder = {shoulder} length = {length} neck = {neck} setNeck = {setNeck} armhole = {armhole} setArmhole = {setArmhole}/>} />
           <Route path = "/style" element={<Style setProg = {setProg}/>}/>
           <Route path = "/hem" element={<Hem setProg = {setProg} hem = {hem} setHem = {setHem} length = {length} armhole = {armhole} sleeve = {sleeve} bodyRibbing = {bodyRibbing} setBodyRibbing = {setBodyRibbing} sleeveRibbing = {sleeveRibbing} setSleeveRibbing = {setSleeveRibbing}/>}/>
           <Route path="/pattern" element={<Pattern setProg = {setProg} sts = {sts} rows = {rows} shoulder = {shoulder} chest = {chest} length = {length} neck = {neck} sleeve = {sleeve} armhole = {armhole} hem = {hem} bodyRibbing = {bodyRibbing}/>}/>
