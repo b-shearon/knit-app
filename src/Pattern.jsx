@@ -1,16 +1,26 @@
 import UnitsContext from "./contexts/UnitsContext.js";
 import { useContext, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 
 export default function Pattern(props) {
 
+  const navigate = useNavigate();
+
   //Selected units to use throughout pattern
   const selectedUnits = useContext(UnitsContext);
 
-  //Set the users current progress through the questions
+  //On load...
   useEffect(() => {
+
+    //Set the users current progress through the questions
     props.setProg(100);
+
+    //Sends user back to homepage if they skipped over any steps
+    if(props.rows <= 0 || props.shoulder <= 0 || props.length <= 0){
+      navigate('/');
+    }
+    
   }, []);
 
   return (
@@ -71,9 +81,11 @@ export default function Pattern(props) {
                       }long from the bottom edge. Make sure to end with a WS row. </p> 
                       : <></>}
             {props.hem == 2 ? <><p>Knit {Math.floor(props.rows / 2)} rows in stockinette stitch.</p> 
-                      <p>* Next, pick up the edge loop on the cast-on edge that is parallel to the stitch on your needle using the left needle.</p>
-                      <p>Knit the first two stitches on your left needle together, thus knitting the edge loop and it's parallel stitch together.</p>
-                      <p>Repeat from * until you've knit all your stitches together with their corresponding edge loop, and you have no stitches left on your left needle.</p>
+            <p>* Next, insert your right needle into the first stitch on your left needle.</p>
+                      <p>Then insert you right needle into the cast-on edge loop parallel to first stitch on your left needle.</p>
+                      <p>Knit the two stitches together.</p>
+                      <p>Repeat from * until you've knit all your stitches together with their corresponding edge loop, and you have no stitches left on your left needle. This completes the folded hem.</p>
+                      <p>If needed, <a href = "https://www.youtube.com/watch?v=J_S_P06ok6o&ab_channel=PipandPin" target="_blank" rel="noreferrer noopener">here is a video tutorial.</a></p>
                       </>
                       : <></>}
             <p>Knit in stockinette stitch until you panel measures {selectedUnits.units === "metric" ? 
@@ -87,8 +99,8 @@ export default function Pattern(props) {
 
             <h2 style = {{fontWeight: "bold", marginTop: "1.5em"}}>SLEEVES</h2>
             <p>Cast on {selectedUnits.units === "metric" ? 
-                        (Math.floor(props.armhole * (props.sts / 10)) + (Math.floor(props.armhole * (props.sts / 10)) % 2)) + " " :
-                        (Math.floor(props.armhole * (props.sts / 4)) + (Math.floor(props.armhole * (props.sts / 4)) % 2)) + " " 
+                        (Math.floor(props.armhole * (props.sts / 10)) * 2) + " " :
+                        (Math.floor(props.armhole * (props.sts / 4)) * 2) + " " 
             } stitches.</p>
             {props.hem == 1 ? <p>Knit in 1x1 ribbing until your panel measures {selectedUnits.units === "metric" ? 
                         props.sleeveRibbing + " centimeters " :
@@ -96,9 +108,11 @@ export default function Pattern(props) {
                       }long from the bottom edge. Make sure to end with a WS row. </p> 
                       : <></>}
             {props.hem == 2 ? <><p>Knit {Math.floor(props.rows / 2)} rows in stockinette stitch.</p> 
-                      <p>* Next, pick up the edge loop on the cast-on edge that is parallel to the stitch on your needle using the left needle.</p>
-                      <p>Knit the first two stitches on your left needle together, thus knitting the edge loop and it's parallel stitch together.</p>
-                      <p>Repeat from * until you've knit all your stitches together with their corresponding edge loop, and you have no stitches left on your left needle.</p>
+                      <p>* Next, insert your right needle into the first stitch on your left needle.</p>
+                      <p>Then insert you right needle into the cast-on edge loop parallel to first stitch on your left needle.</p>
+                      <p>Knit the two stitches together.</p>
+                      <p>Repeat from * until you've knit all your stitches together with their corresponding edge loop, and you have no stitches left on your left needle. This completes the folded hem.</p>
+                      <p>If needed, <a href = "https://www.youtube.com/watch?v=J_S_P06ok6o&ab_channel=PipandPin" target="_blank" rel="noreferrer noopener">here is a video tutorial.</a></p>
                       </>
                       : <></>}
             <p>Knit in stockinette stitch until your sleeve measures {selectedUnits.units === "metric" ? 

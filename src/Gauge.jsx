@@ -9,8 +9,9 @@ export default function Gauge(props) {
     //Selected units to use throughout pattern
     const selectedUnits = useContext(UnitsContext);
 
-    //Set the users current progress through the questions
+    //On load...
     useEffect(() => {
+        //Set the users current progress through the questions
         props.setProg(15);
       }, []);
 

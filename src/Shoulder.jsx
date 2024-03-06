@@ -6,12 +6,22 @@ import { Button, Row, Col } from "react-bootstrap";
 
 export default function Shoulder(props) {
 
+  const navigate = useNavigate();
+
   //Selected units to use throughout pattern
   const selectedUnits = useContext(UnitsContext);
 
-  //Set the users current progress through the questions
+  //On load...
   useEffect(() => {
+    
+    //Set the users current progress through the questions
     props.setProg(30);
+
+    //Sends user back to homepage if they skipped over any steps
+    if(props.rows <= 0){
+      navigate('/');
+    }
+    
   }, []);
 
   //Change shoulder state, also resets neck measurement if needed so it can't be set higher than the shoulder width.
@@ -35,8 +45,6 @@ export default function Shoulder(props) {
     setValidated(true);
     navigate('/measure');
   };
-
-  const navigate = useNavigate();
 
   return (
         <>

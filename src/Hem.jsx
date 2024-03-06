@@ -1,18 +1,27 @@
 import UnitsContext from "./contexts/UnitsContext.js";
 import { useEffect, useContext } from "react";
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 
 
 export default function Style(props) {
 
+    const navigate = useNavigate();
+
     //Selected units to use throughout pattern
     const selectedUnits = useContext(UnitsContext);
 
-    //Set the users current progress through the questions
+    //On load...
     useEffect(() => {
+      //Set the users current progress through the questions
       props.setProg(77);
+
+      //Sends user back to homepage if they skipped over any steps
+      if(props.rows <= 0 || props.shoulder <= 0){
+        navigate('/');
+      }
+
     }, []);
 
     return (
@@ -36,7 +45,7 @@ export default function Style(props) {
           <p>Sleeve hems: {props.sleeveRibbing} {props.sleeveRibbing <= 1 ? selectedUnits.units === "metric" ? " centimeter" : " inch" : selectedUnits.units === "metric" ? " centimeters" : " inches"}</p>
               <Form.Range aria-label="Sleeve Cuff Ribbing Length Slider" 
               defaultValue = {props.sleeveRibbing} onChange={(e) => props.setSleeveRibbing(e.target.value)} 
-              min="1" max={props.sleeve} 
+              min="1" max={props.sleeve - ((props.chest - props.shoulder) / 2)}
               step={selectedUnits.units === "metric" ? 1 : 0.5}/>
         </> : <></>}
 

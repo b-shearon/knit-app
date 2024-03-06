@@ -1,17 +1,27 @@
 import UnitsContext from "./contexts/UnitsContext.js";
 import { useContext, useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 
 export default function Measure(props) {
 
+    const navigate = useNavigate();
+
     //Selected units to use throughout pattern
     const selectedUnits = useContext(UnitsContext);
 
-    //Set the users current progress through the questions
+    //On load...
     useEffect(() => {
+
+      //Set the users current progress through the questions
       props.setProg(62);
+
+      //Sends user back to homepage if they skipped over any steps
+      if(props.rows <= 0 || props.shoulder <= 0 || props.length <= 0){
+        navigate('/');
+      }
+
     }, []);
 
     //Neck measurement: Any value between 1 and the length of the chest - (5 centimeters or 2 inches) to make sure user can't make neck too wide.
