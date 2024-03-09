@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
-import './App.css'
 
 export default function Home(props) {
 

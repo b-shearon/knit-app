@@ -1,4 +1,5 @@
-import './App.css'
+import './App.css';
+import '../index.css';
 import Home from "./Home";
 import Gauge from "./Gauge.jsx";
 import Shoulder from "./Shoulder.jsx";
